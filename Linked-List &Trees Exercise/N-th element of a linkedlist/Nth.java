@@ -1,16 +1,5 @@
 public class Nth {
-	public class Node
-	{
-		int value;
-		Node child;
-		
-		Node(int value, Node child)
-		{
-			
-			this.value=value;
-			this.child=child;
-		}
-	}
+	
 	
     public static void main(String[] args) {
         // NOTE: The following input values will be used for testing your solution.
@@ -34,12 +23,36 @@ public class Nth {
         // nthFromLast(head2, 4) should return 1.
         // nthFromLast(head2, 5) should return null.
         // nthFromLast(null, 1) should return null.
+        
+      System.out.println(nthFromLast(head, 1).value);  
+      System.out.println(nthFromLast(head, 5).value); 
+      System.out.println(nthFromLast(head2, 2).value); 
+      System.out.println(linkedListToString(nthFromLast(head2, 4))); 
+      System.out.println(linkedListToString(nthFromLast(head2, 5))); 
+      System.out.println(linkedListToString(nthFromLast(null, 1))); 
     }
 
 
     // Implement your function below.
     public static Node nthFromLast(Node head, int n) {
-        return head;
+    	Node left=head;
+    	Node right=head;
+    	//first check if length is greater then n
+    	for(int i=0;i<n;i++)
+    	{
+    		if(right==null)
+    			return null;
+    	
+    		else
+    			right=right.child;
+    	}
+    	//if length is valid then we manage the result
+    	while(right!=null)
+    	{
+    		right=right.child;
+    		left=left.child;
+    	}
+        return left;
     }
 
 
